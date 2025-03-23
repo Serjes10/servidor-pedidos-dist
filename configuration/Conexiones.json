@@ -1,0 +1,11 @@
+[{
+        "Default": {
+            "host": "18.117.207.99",
+            "connectionTimeout": 0,
+            "requestTimeout": 600000,
+            "user": "system",
+            "password": "4S7Q$DxotH!u3Z2b",
+            "database": "sistemapedidos",
+            "port": 3306
+        }
+    }]
