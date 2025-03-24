@@ -23,9 +23,9 @@ class ConexionString {
             sqlConfig = {};
         }
         ;
-        this.user = sqlConfig.user || 'system';
+        this.user = sqlConfig.user || 'sistemapedidos';
         this.password = sqlConfig.pasword || '4S7Q$DxotH!u3Z2b';
-        this.host = sqlConfig.server || '18.117.207.99';
+        this.host = sqlConfig.server || '3.18.4.1';
         this.database = sqlConfig.database || 'sistemapedidos';
         //this.driver = 'tedious';
         this.options = { encrypt: false };

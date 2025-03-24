@@ -17,7 +17,7 @@ const UsuariosController_1 = __importDefault(require("../../Controller/Usuarios/
 const Auth_1 = __importDefault(require("../../classes/Auth"));
 const app = (0, express_1.Router)();
 const auth = new Auth_1.default();
-app.get("/usuario/:id", auth.verificarToken, (req, res) => {
+app.get("/usuario/:id", (req, res) => {
     let params = req.params;
     let Usuarios = new UsuariosController_1.default();
     Usuarios.MostrarUsuario(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -30,7 +30,7 @@ app.get("/usuario/:id", auth.verificarToken, (req, res) => {
         }
     }));
 });
-app.post("/usuario/", auth.verificarToken, (req, res) => {
+app.post("/usuario/",auth.verificarToken,  (req, res) => {
     let params = req.body;
     let Usuarios = new UsuariosController_1.default();
     Usuarios.NuevoUsuario(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {

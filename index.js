@@ -37,6 +37,6 @@ server.app.use("/public", express_1.default.static(path.default.join(__dirname, 
 //  console.log('Backend server running on https://yourdomain.com:5000');
 //});
 
-server.start(() =>{
-console.log('Server Corriendo');
+server.start(() => {
+    console.log('Server Corriendo');
 })
