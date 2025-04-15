@@ -41,7 +41,7 @@ const credentials = { key: privateKey, cert: certificate };
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
-        console.log(enviorement_1.Server_Port)
+     
         this.port = enviorement_1.Server_Port;
         this.https = https.default.createServer(credentials, this.app);
         //this.httServer = new http_1.default.Server(this.app);

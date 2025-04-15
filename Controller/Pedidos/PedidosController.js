@@ -67,10 +67,18 @@ class PedidosController {
                         parametros.Observacion,
                         parametros.usuario.Usuario,
                         (parametros.idEstado === '') ? 1 : parametros.idEstado,
-                        parametros.ObservacionCliente
+                        parametros.ObservacionCliente,
+                        parametros.IdTipoIdentificacion,
+                        parametros.Identificacion,
+                        parametros.NombreCompleto,
+                        parametros.Telefono,
+                        parametros.Correo,
+                        parametros.IdDistrito,
+                        parametros.DireccionEntrega
+
                     ];
                 }
-                let respuesta = yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?)");
+                let respuesta = yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                 if (!respuesta.hasError) {
                     //Emitir evento al medico que reservaron
                     // console.log(reservation.data.Table0[0]);
@@ -100,10 +108,17 @@ class PedidosController {
                         parametros.Observacion,
                         parametros.usuario.Usuario,
                         parametros.idEstado,
-                        null
+                        null,
+                        (parametros?.IdTipoIdentificacion) ? parametros.IdTipoIdentificacion : null,
+                        (parametros?.Identificacion) ? parametros.Identificacion : null,
+                        (parametros?.NombreCompleto) ? parametros.NombreCompleto : null,
+                        (parametros?.Telefono) ? parametros.Telefono : null,
+                        (parametros?.Correo) ? parametros.Correo : null,
+                        (parametros?.IdDistrito) ? parametros.IdDistrito : null,
+                        (parametros?.DireccionEntrega) ? parametros.DireccionEntrega : null,
                     ];
                 }
-                return yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?)");
+                return yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
