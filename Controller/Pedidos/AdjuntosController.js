@@ -41,7 +41,7 @@ class AdjuntosController {
                         parametros.url,
                         parametros.extension,
                         parametros.usuario.Usuario,
-                        parametros.idEstado,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado,
                     ];
                 }
                 return yield conexionSQL.Ejecutar("call spAdjuntosInsertar(?,?,?,?,?,?,?)");

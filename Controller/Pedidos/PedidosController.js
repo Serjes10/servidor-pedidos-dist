@@ -66,7 +66,7 @@ class PedidosController {
                         parametros.DetallePedido,
                         parametros.Observacion,
                         parametros.usuario.Usuario,
-                        parametros.idEstado,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado,
                         parametros.ObservacionCliente
                     ];
                 }

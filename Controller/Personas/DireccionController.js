@@ -34,7 +34,10 @@ class DireccionController {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
-                    conexionSQL.parametros = [parametros.id, parametros.idMunicipio, parametros.ciudad, parametros.direccion, parametros.usuario.Usuario, parametros.idEstado];
+                    conexionSQL.parametros = [parametros.id, 
+			parametros.idMunicipio, parametros.ciudad, 
+			parametros.direccion, parametros.usuario.Usuario, 
+			(parametros.idEstado === '') ? 1 : parametros.idEstado];
                 }
                 return conexionSQL.Ejecutar("call spDireccionInsertar(?,?,?,?,?,?)");
             }

@@ -28,7 +28,7 @@ app.post("/cargarArchivos", (req, res) => {
     }
     var nombreArchivo = `${nombre.trim()}-${new Date().getSeconds()}-${new Date().getMilliseconds()}.${extensionArchivo}`;
     // Mover el archivo del temporal a un path
-    var path = `/home/ubuntu/sagar/SistemaPedidos/public/${nombreArchivo}`;
+    var path = `/home/ubuntu/back-end-sagar/servidor-pedidos-dist/public/${nombreArchivo}`;
     archivo.mv(path, (err) => {
         if (err) {
 		console.log(err);

@@ -43,11 +43,11 @@ class PersonasController {
                         parametros.nombreOrganizacion,
                         parametros.idTipoIdentificacion,
                         parametros.identificacion,
-                        parametros.fechaNacimiento,
+                        (parametros.fechaNacimiento === '') ? null : parametros.fechaNacimiento,
                         parametros.idDireccion,
                         parametros.idGenero,
                         parametros.usuario.Usuario,
-                        parametros.idEstado,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado
                     ];
                 }
                 return conexionSQL.Ejecutar("call spPersonasInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -71,7 +71,7 @@ class PersonasController {
                         parametros.nombreOrganizacion,
                         parametros.idTipoIdentificacion,
                         parametros.identificacion,
-                        parametros.fechaNacimiento,
+                        (parametros.fechaNacimiento === '') ? null : parametros.fechaNacimiendo,
                         parametros.idDireccion,
                         parametros.idGenero,
                         parametros.usuario.Usuario,

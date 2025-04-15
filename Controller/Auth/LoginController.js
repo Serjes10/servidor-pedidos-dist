@@ -25,6 +25,7 @@ class LoginController {
                     conexionSQL.parametros = [parametros.usuario, parametros.clave];
                 }
                 let respuesta = yield conexionSQL.Ejecutar("call spLogueo(?,?)");
+		
                 let newArrayMenu = [];
                 if (!respuesta.hasError) {
                     let token = auth.generateToken(respuesta.data.Table0[0]);

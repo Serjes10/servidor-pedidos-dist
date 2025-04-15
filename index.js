@@ -30,7 +30,7 @@ server.app.use((0, cors_1.default)({ origin: true, credentials: true }));
 
 //Rutas
 server.app.use('/api/dev', indexRoutes_1.default);
-server.app.use("/public", express_1.default.static(path.default.join(__dirname, '../public')));
+server.app.use("/public", express_1.default.static(path.default.join(__dirname, './public')));
 
 
 //server.start(6000, () => {

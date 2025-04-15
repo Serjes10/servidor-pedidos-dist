@@ -41,7 +41,7 @@ class MetodosPagoController {
                         parametros.metodoPago,
                         parametros.descripcion,
                         parametros.usuario,
-                        parametros.idEstado,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado,
                     ];
                 }
                 return yield conexionSQL.Ejecutar("call spMetodosPagoInsertar(?,?,?,?,?)");

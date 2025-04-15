@@ -34,7 +34,11 @@ class TipoContactosController {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
-                    conexionSQL.parametros = [parametros.id, parametros.tipoContacto, parametros.usuario.Usuario, parametros.idEstado];
+                    conexionSQL.parametros = [
+			parametros.id, 
+			parametros.tipoContacto, 
+			parametros.usuario.Usuario, 
+			(parametros.idEstado === '') ? 1 : parametros.idEstado];
                 }
                 return yield conexionSQL.Ejecutar("call spTipoContactoInsertar(?, ?, ?, ?)");
             }

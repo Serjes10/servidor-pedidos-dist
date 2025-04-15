@@ -40,7 +40,7 @@ class RepartosController {
                         parametros.Descripcion,
                         parametros.Telefono,
                         parametros.usuario,
-                        parametros.idEstado,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado,
                     ];
                 }
                 return yield conexionSQL.Ejecutar("call spRepartosInsertar(?,?,?,?,?,?)");

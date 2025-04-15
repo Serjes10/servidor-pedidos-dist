@@ -33,8 +33,8 @@ const http_1 = __importDefault(require("http"));
 const socket = __importStar(require("../sockets/sockets"));
 const fs = require("fs");
 const https = __importDefault(require("https"));
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/augajoapp.com/privkey.pem');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/augajoapp.com/fullchain.pem');
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/belleza-cr.com/privkey.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/belleza-cr.com/fullchain.pem');
 const credentials = { key: privateKey, cert: certificate };
 //const credentials = {};
 
@@ -64,6 +64,7 @@ class Server {
         });
     }
     start(callback) {
+	console.log(this.port);
         this.https.listen(this.port, callback);
     }
 }
