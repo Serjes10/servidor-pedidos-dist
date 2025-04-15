@@ -109,13 +109,13 @@ class PedidosController {
                         parametros.usuario.Usuario,
                         parametros.idEstado,
                         null,
-                        (parametros?.IdTipoIdentificacion) ? parametros.IdTipoIdentificacion : null,
-                        (parametros?.Identificacion) ? parametros.Identificacion : null,
-                        (parametros?.NombreCompleto) ? parametros.NombreCompleto : null,
-                        (parametros?.Telefono) ? parametros.Telefono : null,
-                        (parametros?.Correo) ? parametros.Correo : null,
-                        (parametros?.IdDistrito) ? parametros.IdDistrito : null,
-                        (parametros?.DireccionEntrega) ? parametros.DireccionEntrega : null,
+                        (parametros.IdTipoIdentificacion) ? parametros.IdTipoIdentificacion : null,
+                        (parametros.Identificacion) ? parametros.Identificacion : null,
+                        (parametros.NombreCompleto) ? parametros.NombreCompleto : null,
+                        (parametros.Telefono) ? parametros.Telefono : null,
+                        (parametros.Correo) ? parametros.Correo : null,
+                        (parametros.IdDistrito) ? parametros.IdDistrito : null,
+                        (parametros.DireccionEntrega) ? parametros.DireccionEntrega : null,
                     ];
                 }
                 return yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
