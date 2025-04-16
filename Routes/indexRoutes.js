@@ -24,9 +24,11 @@ const AdjuntosRoute_1 = __importDefault(require("./Pedidos/AdjuntosRoute"));
 const PedidosRoute_1 = __importDefault(require("./Pedidos/PedidosRoute"));
 const LoginRoute_1 = __importDefault(require("./Auth/LoginRoute"));
 const CargaArchivosRoute_1 = __importDefault(require("./Adjuntos/CargaArchivosRoute"));
+const DistritosRoute = __importDefault(require("./Personas/DistritosRoute")); 
+
 let app = (0, express_1.default)();
 // app.use('/auth', AuthRoutes);
-app.use('/personas', TipoContactosRoutes_1.default, GeneroRoute_1.default, ContactosRoutes_1.default, TipoIdentificacionRoute_1.default, DepartamentoRoute_1.default, MunicipioRoute_1.default, DireccionRoute_1.default, PersonasRoute_1.default);
+app.use('/personas', TipoContactosRoutes_1.default, GeneroRoute_1.default, ContactosRoutes_1.default, TipoIdentificacionRoute_1.default, DepartamentoRoute_1.default, MunicipioRoute_1.default, DireccionRoute_1.default, PersonasRoute_1.default, DistritosRoute.default);
 app.use("/pedido", PedidosRoute_1.default);
 app.use("/mantenimiento", MetodosPagoRoute_1.default, RepartosRoute_1.default, EstadosRoute_1.default, AdjuntosRoute_1.default, TipoPedidosRoute_1.default);
 app.use("/seguridad", MenusRoute_1.default, TiposUsuarioRoute_1.default, RelacionTipoUsrRoute_1.default, UsuariosRoute_1.default);

@@ -68,13 +68,13 @@ class PedidosController {
                         parametros.usuario.Usuario,
                         (parametros.idEstado === '') ? 1 : parametros.idEstado,
                         parametros.ObservacionCliente,
-                        parametros.IdTipoIdentificacion,
-                        parametros.Identificacion,
-                        parametros.NombreCompleto,
-                        parametros.Telefono,
-                        parametros.Correo,
-                        parametros.IdDistrito,
-                        parametros.DireccionEntrega
+                        (parametros.IdTipoIdentificacion) ? parametros.IdTipoIdentificacion : null,
+                        (parametros.Identificacion) ? parametros.Identificacion : null,
+                        (parametros.NombreCompleto) ? parametros.NombreCompleto : null,
+                        (parametros.Telefono) ? parametros.Telefono : null,
+                        (parametros.Correo) ? parametros.Correo : null,
+                        (parametros.IdDistrito) ? parametros.IdDistrito : null,
+                        (parametros.DireccionEntrega) ? parametros.DireccionEntrega : null,
 
                     ];
                 }
