@@ -97,4 +97,17 @@ app.get("/pedido/usuario/:id", auth.verificarToken, (req, res) => {
         }
     }));
 });
+app.get("/pedido/filtrar/:fechaInicio/:fechaFinal", (req, res) => {
+    let params = req.params;
+    let Pedidos = new PedidosController_1.default();
+    Pedidos.MostrarPedidosFiltrados(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
+        let result = yield respuesta;
+        if (!result.hasError) {
+            return res.status(200).send(result);
+        }
+        else {
+            return res.status(400).send(result);
+        }
+    }));
+});
 exports.default = app;

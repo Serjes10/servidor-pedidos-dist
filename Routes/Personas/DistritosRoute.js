@@ -13,20 +13,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
-const DistritosController = require('../../Controller/Personas/DistritosController.js');
+
+const DistritosController = __importDefault(require("../../Controller/Personas/DistritosController.js"));
 const app = express();
 
-app.get('/distritos', (req, res)=>{
+app.get('/distritos', (req, res) => {
     let params = req.params;
-    let distrito = new DistritosController();
-
-    distrito.mostrarDistritos().then((result)=>{
-        if(!result.hasError){
+    let distrito = new DistritosController.default();
+    distrito.mostrarDistritos(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
+        let result = yield respuesta;
+        if (!respuesta.hasError) {
             res.status(200).send(result);
-        }else{
+        }
+        else {
             res.status(400).send(result);
         }
-    })
+    }));
+
 });
 
 exports.default = app;

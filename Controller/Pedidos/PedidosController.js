@@ -161,5 +161,19 @@ class PedidosController {
             }
         });
     }
+    MostrarPedidosFiltrados(parametros) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let conexionSQL = new DbHelper_1.default();
+                if (parametros) {
+                    conexionSQL.parametros = [parametros.fechaInicio, parametros.fechaFinal];
+                }
+                return yield conexionSQL.Ejecutar("call spPedidosFiltrar(?,?)");
+            }
+            catch (error) {
+                return (0, classes_1.errorMensaje)("");
+            }
+        });
+    }
 }
 exports.default = PedidosController;
