@@ -33,9 +33,9 @@ const http_1 = __importDefault(require("http"));
 const socket = __importStar(require("../sockets/sockets"));
 const fs = require("fs");
 const https = __importDefault(require("https"));
-//const privateKey = fs.readFileSync('/etc/letsencrypt/live/belleza-cr.com/privkey.pem');
-//const certificate = fs.readFileSync('/etc/letsencrypt/live/belleza-cr.com/fullchain.pem');
-//const credentials = { key: privateKey, cert: certificate };
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/belleza-cr.com/privkey.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/belleza-cr.com/fullchain.pem');
+const credentials = { key: privateKey, cert: certificate };
 //const credentials = {};
 
 class Server {
@@ -43,8 +43,8 @@ class Server {
         this.app = (0, express_1.default)();
      
         this.port = enviorement_1.Server_Port;
-        //this.https = https.default.createServer(credentials, this.app);
-        this.httServer = new http_1.default.Server(this.app);
+        this.https = https.default.createServer(credentials, this.app);
+        //this.httServer = new http_1.default.Server(this.app);
         this.io = (0, socket_io_1.default)(this.https);
         this.escucharSocket();
     }
@@ -65,8 +65,8 @@ class Server {
     }
     start(callback) {
 	    //console.log(this.port);
-        //this.https.listen(this.port, callback);
-        this.httServer.listen(this.port, callback);
+        this.https.listen(this.port, callback);
+        //this.httServer.listen(this.port, callback);
     }
 }
 exports.default = Server;
