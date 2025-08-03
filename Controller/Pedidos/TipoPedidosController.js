@@ -40,8 +40,8 @@ class TipoPedidoController {
                         parametros.id,
                         parametros.tipoPedido,
                         parametros.descripcion,
-                        parametros.usuario,
-                        (parametros.idEstado === '') ? 1 : parametros.idEstado ,
+                        parametros.usuario.Usuario,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado,
                     ];
                 }
                 return yield conexionSQL.Ejecutar("call spTipoPedidosInsertar(?,?,?,?,?)");
@@ -60,7 +60,7 @@ class TipoPedidoController {
                         parametros.id,
                         parametros.tipoPedido,
                         parametros.descripcion,
-                        parametros.usuario,
+                        parametros.usuario.Usuario,
                         parametros.idEstado,
                     ];
                 }
@@ -75,7 +75,7 @@ class TipoPedidoController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
-                parametros.usuario = "ymunoz";
+                parametros.usuario = "admin";
                 if (parametros) {
                     conexionSQL.parametros = [parametros.id, parametros.usuario];
                 }

@@ -35,10 +35,10 @@ class GeneroController {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
                     conexionSQL.parametros = [
-			parametros.id, 
-			parametros.genero, 
-			parametros.usuario.Usuario, 
-			(parametros.idEstado === '') ? 1 : parametros.idEstado];
+                        parametros.id,
+                        parametros.genero,
+                        parametros.usuario.Usuario,
+                        (parametros.idEstado === '') ? 1 : parametros.idEstado];
                 }
                 return yield conexionSQL.Ejecutar("call spGeneroInsertar (?,?,?,?)");
             }
@@ -65,8 +65,9 @@ class GeneroController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
+                parametros.usuario = "admin";
                 if (parametros) {
-                    conexionSQL.parametros = [parametros.id, parametros.usuario.Usuario];
+                    conexionSQL.parametros = [parametros.id, parametros.usuario];
                 }
                 return yield conexionSQL.Ejecutar("call spGeneroEliminar (?,?)");
             }

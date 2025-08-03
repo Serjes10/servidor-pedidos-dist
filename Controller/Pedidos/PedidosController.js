@@ -15,15 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const DbHelper_1 = __importDefault(require("../../helpers/DbHelper")); //Metodos para llamar al procedimiento almacenado
 const classes_1 = require("../../classes/classes");
 const server_1 = __importDefault(require("../../classes/server"));
+
 class PedidosController {
     MostrarPedido(parametros) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
-                    conexionSQL.parametros = [parametros.id];
+                    conexionSQL.parametros = [parametros.id, parametros.idTipoPedido];
                 }
-                return yield conexionSQL.Ejecutar("call spPedidosMostrar(?)");
+
+                return yield conexionSQL.Ejecutar("call spPedidosMostrar(?, ?)");;
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
@@ -75,10 +77,13 @@ class PedidosController {
                         (parametros.Correo) ? parametros.Correo : null,
                         (parametros.IdDistrito) ? parametros.IdDistrito : null,
                         (parametros.DireccionEntrega) ? parametros.DireccionEntrega : null,
+                        (parametros.Monto) ? parametros.Monto : 0,
+
 
                     ];
                 }
-                let respuesta = yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                let respuesta = yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                 if (!respuesta.hasError) {
                     //Emitir evento al medico que reservaron
                     // console.log(reservation.data.Table0[0]);
@@ -116,9 +121,11 @@ class PedidosController {
                         (parametros.Correo) ? parametros.Correo : null,
                         (parametros.IdDistrito) ? parametros.IdDistrito : null,
                         (parametros.DireccionEntrega) ? parametros.DireccionEntrega : null,
+                        (parametros.Monto) ? parametros.Monto : 0,
+
                     ];
                 }
-                return yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                return yield conexionSQL.Ejecutar("call spPedidosInsertar(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
@@ -129,8 +136,9 @@ class PedidosController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
+                parametros.usuario = "admin";
                 if (parametros) {
-                    conexionSQL.parametros = [parametros.id, parametros.usuario.Usuario];
+                    conexionSQL.parametros = [parametros.id, parametros.usuario];
                 }
                 return yield conexionSQL.Ejecutar("call spPedidosEliminar(?,?)");
             }

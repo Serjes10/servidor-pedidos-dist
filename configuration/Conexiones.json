@@ -5,7 +5,7 @@
             "requestTimeout": 600000,
             "user": "sistemapedidos",
             "password": "4S7Q$DxotH!u3Z2b",
-            "database": "sistemapedidos",
+            "database": "sistemapedidos_dev",
             "port": 3306
         }
     }]

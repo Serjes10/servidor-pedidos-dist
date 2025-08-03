@@ -40,7 +40,7 @@ class ContactosController {
 			parametros.idTipoContacto, 
 			parametros.idPersona, 
 			parametros.detalleContacto, 
-			parametros.usuario, 
+			parametros.usuario.Usuario, 
 			(parametros.idEstado === '') ? 1 : parametros.idEstado];
                 }
                 return yield conexionSQL.Ejecutar("call spContactoInsertar(?,?,?,?,?, ?)");
@@ -55,7 +55,7 @@ class ContactosController {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
-                    conexionSQL.parametros = [parametros.id, parametros.idTipoContacto, parametros.idPersona, parametros.detalleContacto, parametros.usuario, parametros.idEstado];
+                    conexionSQL.parametros = [parametros.id, parametros.idTipoContacto, parametros.idPersona, parametros.detalleContacto, parametros.usuario.Usuario, parametros.idEstado];
                 }
                 return yield conexionSQL.Ejecutar("call spContactoInsertar(?,?,?,?,?,?)");
             }
@@ -68,6 +68,7 @@ class ContactosController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
+                           parametros.usuario = "admin";
                 if (parametros) {
                     conexionSQL.parametros = [parametros.id, parametros.idTipoContacto, parametros.idPersona, parametros.detalleContacto, parametros.usuario];
                 }

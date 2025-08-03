@@ -14,64 +14,68 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const DbHelper_1 = __importDefault(require("../../helpers/DbHelper")); //Metodos para llamar al procedimiento almacenado
 const classes_1 = require("../../classes/classes");
-class RepartosController {
-    MostrarRepartos(parametros) {
+
+class DetalleAbonosController {
+
+    MostrarDetalleAbono(parametros) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
                     conexionSQL.parametros = [parametros.id];
                 }
-                return yield conexionSQL.Ejecutar("call spRepartosMostrar(?)");
+                return yield conexionSQL.Ejecutar("call spDetalleAbonosMostrar(?)");
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
             }
         });
     }
-    NuevoReparto(parametros) {
+
+    NuevoDetalleAbono(parametros) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
                     conexionSQL.parametros = [
-                        parametros.Id,
-                        parametros.NombreReparto,
-                        parametros.Descripcion,
-                        parametros.Telefono,
-                        parametros.usuario.Usuario,
-                        (parametros.idEstado === '') ? 1 : parametros.idEstado,
+                        parametros.idPedido,
+                        parametros.idMetodoPago,
+                        parametros.monto,
+                        parametros.descripcion,
+                        parametros.usuario.Usuario
                     ];
                 }
-                return yield conexionSQL.Ejecutar("call spRepartosInsertar(?,?,?,?,?,?)");
+                return yield conexionSQL.Ejecutar("call spDetalleAbonosInsertar(?,?,?,?,?)");
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
             }
         });
     }
-    ActualizarReparto(parametros) {
+
+    ActualizarDetalleAbono(parametros) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
                 if (parametros) {
                     conexionSQL.parametros = [
-                        parametros.Id,
-                        parametros.NombreReparto,
-                        parametros.Descripcion,
-                        parametros.Telefono,
-                        parametros.usuario.Usuario,
-                        parametros.idEstado,
+                        parametros.id,
+                        parametros.idPedido,
+                        parametros.idMetodoPago,
+                        parametros.monto,
+                        parametros.descripcion,
+                        parametros.usuario.Usuario
                     ];
                 }
-                return yield conexionSQL.Ejecutar("call spRepartosInsertar(?,?,?,?,?,?)");
+                return yield conexionSQL.Ejecutar("call spDetalleAbonosActualizar(?,?,?,?,?,?)");
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
             }
         });
     }
-    EliminarReparto(parametros) {
+
+    EliminarDetalleAbono(parametros) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
@@ -79,7 +83,7 @@ class RepartosController {
                 if (parametros) {
                     conexionSQL.parametros = [parametros.id, parametros.usuario];
                 }
-                return yield conexionSQL.Ejecutar("call spRepartosEliminar(?,?)");
+                return yield conexionSQL.Ejecutar("call spDetalleAbonosEliminar(?,?)");
             }
             catch (error) {
                 return (0, classes_1.errorMensaje)("");
@@ -87,4 +91,4 @@ class RepartosController {
         });
     }
 }
-exports.default = RepartosController;
+exports.default = DetalleAbonosController;

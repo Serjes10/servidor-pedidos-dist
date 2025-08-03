@@ -40,7 +40,7 @@ class MetodosPagoController {
                         parametros.id,
                         parametros.metodoPago,
                         parametros.descripcion,
-                        parametros.usuario,
+                        parametros.usuario.Usuario,
                         (parametros.idEstado === '') ? 1 : parametros.idEstado,
                     ];
                 }
@@ -61,7 +61,7 @@ class MetodosPagoController {
                         parametros.id,
                         parametros.metodoPago,
                         parametros.descripcion,
-                        parametros.usuario,
+                        parametros.usuario.Usuario,
                         parametros.idEstado,
                     ];
                 }
@@ -77,7 +77,7 @@ class MetodosPagoController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
-                parametros.usuario = "ymunoz";
+                parametros.usuario = "admin";
                 if (parametros) {
                     conexionSQL.parametros = [parametros.id, parametros.usuario];
                 }

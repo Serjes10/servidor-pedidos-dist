@@ -17,7 +17,8 @@ const PedidosController_1 = __importDefault(require("../../Controller/Pedidos/Pe
 const Auth_1 = __importDefault(require("../../classes/Auth"));
 const app = (0, express_1.Router)();
 const auth = new Auth_1.default();
-app.get("/pedido/:id", (req, res) => {
+
+app.get("/pedido/:id/:idTipoPedido", (req, res) => {
     let params = req.params;
     let Pedidos = new PedidosController_1.default();
     Pedidos.MostrarPedido(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
