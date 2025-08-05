@@ -84,7 +84,8 @@ app.get("/pedidoSeguimiento", auth.verificarToken, (req, res) => {
         }
     }));
 });
-app.get("/pedido/usuario/:id", auth.verificarToken, (req, res) => {
+
+app.get("/usuario/:id", auth.verificarToken, (req, res) => {
     let params = req.params;
     params.usuario = req.body.usuario;
     let Pedidos = new PedidosController_1.default();

@@ -15,7 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const TipoPedidosController_1 = __importDefault(require("../../Controller/Pedidos/TipoPedidosController"));
 const app = (0, express_1.Router)();
-app.get("/tipoPedido/:id", (req, res) => {
+const Auth_1 = __importDefault(require("../../classes/Auth"));
+const auth = new Auth_1.default();
+
+app.get("/tipoPedido/:id",auth.verificarToken,(req, res) => {
     let params = req.params;
     let TipoPedido = new TipoPedidosController_1.default();
     TipoPedido.mostrarTipoPedido(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,7 +31,7 @@ app.get("/tipoPedido/:id", (req, res) => {
         }
     }));
 });
-app.post("/tipoPedido/", (req, res) => {
+app.post("/tipoPedido/", auth.verificarToken,(req, res) => {
     let params = req.body;
     let tipoPedido = new TipoPedidosController_1.default();
     tipoPedido.nuevoTipoPedido(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,7 +44,7 @@ app.post("/tipoPedido/", (req, res) => {
         }
     }));
 });
-app.put("/tipoPedido/", (req, res) => {
+app.put("/tipoPedido/", auth.verificarToken,(req, res) => {
     let params = req.body;
     let tipoPedido = new TipoPedidosController_1.default();
     tipoPedido.actualizarPedido(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,7 +57,7 @@ app.put("/tipoPedido/", (req, res) => {
         }
     }));
 });
-app.delete("/tipoPedido/:id", (req, res) => {
+app.delete("/tipoPedido/:id",auth.verificarToken, (req, res) => {
     let params = req.params;
     let tipoPedido = new TipoPedidosController_1.default();
     tipoPedido.eliminarPedido(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {

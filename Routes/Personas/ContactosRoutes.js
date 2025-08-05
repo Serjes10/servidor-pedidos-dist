@@ -15,7 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const ContactoController_1 = __importDefault(require("../../Controller/Personas/ContactoController"));
 const app = (0, express_1.Router)();
-app.get("/contactos/:id", (req, res) => {
+const Auth_1 = __importDefault(require("../../classes/Auth"));
+const auth = new Auth_1.default();
+
+app.get("/contactos/:id", auth.verificarToken , (req, res) => {
     let params = req.params;
     let contactos = new ContactoController_1.default();
     contactos.mostrarContactos(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,7 +31,7 @@ app.get("/contactos/:id", (req, res) => {
         }
     }));
 });
-app.post("/contactos/", (req, res) => {
+app.post("/contactos/", auth.verificarToken ,(req, res) => {
     let params = req.body;
     let contactos = new ContactoController_1.default();
     contactos.insertarContactos(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,7 +44,7 @@ app.post("/contactos/", (req, res) => {
         }
     }));
 });
-app.put("/contactos/", (req, res) => {
+app.put("/contactos/", auth.verificarToken ,(req, res) => {
     let params = req.body;
     let contactos = new ContactoController_1.default();
     contactos.actualizarContactos(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,7 +57,7 @@ app.put("/contactos/", (req, res) => {
         }
     }));
 });
-app.delete("/contactos/:id", (req, res) => {
+app.delete("/contactos/:id", auth.verificarToken ,(req, res) => {
     let params = req.params;
     let contactos = new ContactoController_1.default();
     contactos.eliminarContactos(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {

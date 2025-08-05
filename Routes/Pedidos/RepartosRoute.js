@@ -15,7 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const RepartosController_1 = __importDefault(require("../../Controller/Pedidos/RepartosController"));
 const app = (0, express_1.Router)();
-app.get("/reparto/:id", (req, res) => {
+const Auth_1 = __importDefault(require("../../classes/Auth"));
+const auth = new Auth_1.default();
+
+app.get("/reparto/:id", auth.verificarToken, (req, res) => {
     let params = req.params;
     let Repartos = new RepartosController_1.default();
     Repartos.MostrarRepartos(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,7 +31,7 @@ app.get("/reparto/:id", (req, res) => {
         }
     }));
 });
-app.post("/reparto/", (req, res) => {
+app.post("/reparto/", auth.verificarToken, (req, res) => {
     let params = req.body;
     let Repartos = new RepartosController_1.default();
     Repartos.NuevoReparto(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,7 +44,7 @@ app.post("/reparto/", (req, res) => {
         }
     }));
 });
-app.put("/reparto/", (req, res) => {
+app.put("/reparto/", auth.verificarToken, (req, res) => {
     let params = req.body;
     let Repartos = new RepartosController_1.default();
     Repartos.ActualizarReparto(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,7 +57,7 @@ app.put("/reparto/", (req, res) => {
         }
     }));
 });
-app.delete("/reparto/:id", (req, res) => {
+app.delete("/reparto/:id", auth.verificarToken, (req, res) => {
     let params = req.params;
     let Repartos = new RepartosController_1.default();
     Repartos.EliminarReparto(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {

@@ -15,7 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const DepartamentoController_1 = __importDefault(require("../../Controller/Personas/DepartamentoController"));
 const app = (0, express_1.Router)();
-app.get("/departamento/:id", (req, res) => {
+const Auth_1 = __importDefault(require("../../classes/Auth"));
+const auth = new Auth_1.default();
+
+app.get("/departamento/:id", auth.verificarToken ,(req, res) => {
     let params = req.params;
     let departamento = new DepartamentoController_1.default();
     departamento.DepartamentoMostrar(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,7 +31,7 @@ app.get("/departamento/:id", (req, res) => {
         }
     }));
 });
-app.post("/departamento/", (req, res) => {
+app.post("/departamento/", auth.verificarToken ,(req, res) => {
     let params = req.body;
     let departamento = new DepartamentoController_1.default();
     departamento.DepartamentoInsertar(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,7 +44,7 @@ app.post("/departamento/", (req, res) => {
         }
     }));
 });
-app.put("/departamento/", (req, res) => {
+app.put("/departamento/", auth.verificarToken ,(req, res) => {
     let params = req.body;
     let departamento = new DepartamentoController_1.default();
     departamento.DepartamentoActualizar(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,7 +57,7 @@ app.put("/departamento/", (req, res) => {
         }
     }));
 });
-app.delete("/departamento/:id", (req, res) => {
+app.delete("/departamento/:id", auth.verificarToken ,(req, res) => {
     let params = req.params;
     let departamento = new DepartamentoController_1.default();
     departamento.DepartamentoEliminar(params).then((resultado) => __awaiter(void 0, void 0, void 0, function* () {

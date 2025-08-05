@@ -15,7 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const MetodosPagoController_1 = __importDefault(require("../../Controller/Pedidos/MetodosPagoController"));
 const app = (0, express_1.Router)();
-app.get("/metodoPago/:id", (req, res) => {
+const Auth_1 = __importDefault(require("../../classes/Auth"));
+const auth = new Auth_1.default();
+
+
+app.get("/metodoPago/:id",auth.verificarToken, (req, res) => {
     let params = req.params;
     let MetodoPago = new MetodosPagoController_1.default();
     MetodoPago.mostrarMetodosPago(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,7 +32,7 @@ app.get("/metodoPago/:id", (req, res) => {
         }
     }));
 });
-app.post("/metodoPago/", (req, res) => {
+app.post("/metodoPago/",auth.verificarToken, (req, res) => {
     let params = req.body;
     let MetodoPago = new MetodosPagoController_1.default();
     MetodoPago.nuevoMetodoPago(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,7 +45,7 @@ app.post("/metodoPago/", (req, res) => {
         }
     }));
 });
-app.put("/metodoPago/", (req, res) => {
+app.put("/metodoPago/", auth.verificarToken,(req, res) => {
     let params = req.body;
     let MetodoPago = new MetodosPagoController_1.default();
     MetodoPago.actualizarMetodoPago(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,7 +58,7 @@ app.put("/metodoPago/", (req, res) => {
         }
     }));
 });
-app.delete("/metodoPago/:id", (req, res) => {
+app.delete("/metodoPago/:id",auth.verificarToken, (req, res) => {
     let params = req.params;
     let MetodoPago = new MetodosPagoController_1.default();
     MetodoPago.EliminarMetodoPago(params).then((respuesta) => __awaiter(void 0, void 0, void 0, function* () {

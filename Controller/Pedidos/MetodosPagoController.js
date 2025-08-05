@@ -35,6 +35,7 @@ class MetodosPagoController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let conexionSQL = new DbHelper_1.default();
+                console.log(parametros.usuario)
                 if (parametros) {
                     conexionSQL.parametros = [
                         parametros.id,
